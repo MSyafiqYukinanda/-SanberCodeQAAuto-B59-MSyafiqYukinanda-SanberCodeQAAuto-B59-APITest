@@ -17,21 +17,3 @@ describe('Authentication API Tests', function () {
     expect(response.body.data).to.have.property('refreshToken'); // Check for refresh_token in the data object
   });
 });
-
-
-// describe('Authentication API Tests', () => {
-//     it('should authenticate user and return tokens', async () => {
-//         const loginData = {
-//             email: "testtoko@test.com",
-//             password: "123qweasdzxc"
-//         };
-
-//         const res = await request(app)
-//             .post('/authentications')
-//             .send(loginData);
-
-//         expect(res.status).to.equal(201);
-//         expect(res.body).to.have.property('access_token'); // Check for access_token
-//         expect(res.body).to.have.property('refresh_token'); // Check for refresh_token
-//     });
-// });

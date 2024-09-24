@@ -15,11 +15,12 @@ describe('Category API Tests', () => {
                 email: 'testtoko@test.com',
                 password: '123qweasdzxc'
             });
-        accessToken = authRes.body.data.accessToken;
+        accessToken = authRes.body.data.accessToken;    // save accessToken for API request
     });
 
-    //Create New Category
+    //1. Create New Category
     it('should create a new category', async () => {
+        //new category data
         const newCategory = {
             name: 'kategori3',
             description: 'deskripsi kategori3'
@@ -40,7 +41,7 @@ describe('Category API Tests', () => {
         console.log('Created Category ID:', createdCategoryId);
     });
 
-    //Read or Get Category Detail (by categoryID)
+    //2. Read or Get Category Detail (by categoryID)
     it('should get the details of the created category', async () => {
         const res = await request(app)
             .get(`/categories/${createdCategoryId}`)
@@ -53,10 +54,11 @@ describe('Category API Tests', () => {
         expect(res.body.data.category).to.have.property('description', 'deskripsi kategori3');
     });
 
-    //Update existing category (by categoryID)
+    //3. Update existing category (by categoryID)
     it('should update the existing category', async () => {
         expect(createdCategoryId).to.exist;
-
+        
+        //update category data
         const updatedCategory = {
             name: 'kategori3update',
             description: 'kategori3deskripsiupdate'
@@ -76,7 +78,7 @@ describe('Category API Tests', () => {
         expect(res.body.data).to.have.property('name', 'kategori3update');
     });
     
-    //Deleting category (by categoryID)
+    //4. Deleting category (by categoryID)
     it('should delete the created category', async () => {
         console.log(`Category ID to Delete: ${createdCategoryId}`);
         const res = await request(app)
