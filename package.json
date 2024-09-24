@@ -20,5 +20,8 @@
     "chai": "^5.1.1",
     "mocha": "^10.7.3",
     "supertest": "^7.0.0"
+  },
+  "mocha": {
+    "timeout": 5000
   }
 }
